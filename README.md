@@ -64,7 +64,7 @@ AirBnB_clone$ ./console.py
 ## Authors
 | NAME  | EMAIL       |
 |-------|-------------|
-| Frankie Ukwu| youremail@gmail.com|
+| Frank Ugwu Williams| frankuwill101@gmail.com|
 | Gold Israel| techiegold101@gmail.com| 
 
 
