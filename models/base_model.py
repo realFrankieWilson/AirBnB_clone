@@ -25,7 +25,11 @@ class BaseModel():
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        """Returns a dictionary representation of the instance."""
+        """ Returns a dictionary containing all keys/values of __dict__ of the instance.
+        		by using self.__dict__, only instance attributes set will be returned
+				a key __class__ must be added to this dictionary with the class name of the object
+				created_at and updated_at must be converted to string object in ISO format.
+        """
         dict_obj = self.__dict__.copy()
         dict_obj['__class__'] = self.__class__.__name__
         dict_obj['created_at'] = self.created_at.isoformat()
