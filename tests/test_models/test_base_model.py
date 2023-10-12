@@ -4,8 +4,10 @@ from models.base_model import BaseModel
 """ This module contains the test cases for BaseModel class
     methods. """
 
+
 class TestBaseModel(unittest.TestCase):
     """Test cases for the BaseModel class in the models/base_model module."""
+
     def test_str_representation(self):
         """ Test the string representation of the object."""
         obj = BaseModel()
@@ -17,15 +19,15 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(hasattr(obj, 'created_at'))
         # check is 'created_at' attribute is present
         self.assertTrue(hasattr(obj, 'updated_at'))
-    
+
     def test_save_method(self):
         """ Test that the save method updates the 'updated_at' attribute."""
-        obj =BaseModel()
+        obj = BaseModel()
         prev_updated_at = obj.updated_at
         obj.save
         self.assertNotEqual(prev_updated_at, obj.updated_at)
         # check if 'updated_at' was updated.
-    
+
     def test_to_dict_method(self):
         """ Test that the to_dict method returns a valid dictionary
         representation of the object."""
@@ -39,8 +41,7 @@ class TestBaseModel(unittest.TestCase):
         # check if 'created_at' attribute is present.
         self.assertTrue(hasattr(obj_dict, 'updated_at'))
         # check is 'updated_at attribute is present.
-        
-        
+
+
 if __name__ == '__main':
     unittest.main()
-    
