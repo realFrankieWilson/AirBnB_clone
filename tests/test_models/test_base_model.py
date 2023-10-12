@@ -11,7 +11,6 @@ import re
 import unittest
 
 
-
 class TestBaseModel(unittest.TestCase):
     """
     Test cases for the BaseModel class in the models/base_model module.
@@ -49,7 +48,7 @@ class TestBaseModel(unittest.TestCase):
             self.assertEqual(
                 """__init__() missing 1 required positional argument:
                 'self'""", str(e.exception)
-                )
+            )
 
     def test_my_obj_id(self):
         """Tests if the id value are unique"""
@@ -114,7 +113,7 @@ class TestBaseModel(unittest.TestCase):
         special_char = match_char.group(3)
         special_char = re.sub(
             r"(datetime\.datetime\([^)]*\))", "'\\1'", special_char
-            )
+        )
         # to be continued
 
 # ========== THE TO_DICT METHOD TESTS ==========
@@ -140,7 +139,6 @@ class TestBaseModel(unittest.TestCase):
         obj.save
         self.assertNotEqual(prev_updated_at, obj.updated_at)
         # check if 'updated_at' was updated.
-
 
     def test_to_dict_method(self):
         """ Test that the to_dict method returns a valid dictionary
@@ -195,7 +193,6 @@ class TestBaseModel(unittest.TestCase):
         # check if 'created_at' attribute is present.
         self.assertTrue(hasattr(obj_dict, 'updated_at'))
         # check is 'updated_at attribute is present.
-
 
 
 if __name__ == '__main':
