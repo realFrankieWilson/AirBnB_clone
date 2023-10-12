@@ -9,6 +9,7 @@ from datetime import datetime
 from models.base_model import BaseModel
 import re
 import unittest
+from uuid import uuid4
 
 
 class TestBaseModel(unittest.TestCase):
@@ -139,7 +140,18 @@ class TestBaseModel(unittest.TestCase):
 
     def test_is_type(self):
         """Type test with kwargs from dictionary."""
-        pass
+        my_dict = {
+            '__class__': 'BaseModel',
+            'updated_at': datetime(
+                2040, 12, 30, 23, 59, 30, 123456).isoformat(),
+            'created_at': datetime.now().isoformat(),
+            'id': uuid4(),
+            'key_val': 'anything',
+            'int': 100,
+            'float': 1.00
+        }
+        new_dict = BaseModel(**my_dict)
+        self.assertEqual(new_dict.to_dict(), my_dict)
 
     def test_is_type2(self):
         """Tests type test in dictinary"""
