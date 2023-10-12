@@ -126,12 +126,6 @@ class TestBaseModel(unittest.TestCase):
         """Tests for excess arguments to dictionary"""
         pass
 
-        self.assertTrue(hasattr(obj, 'id'))
-        # check is 'id' attribute is present.
-        self.assertTrue(hasattr(obj, 'created_at'))
-        # check is 'created_at' attribute is present
-        self.assertTrue(hasattr(obj, 'updated_at'))
-
     def test_save_method(self):
         """ Test that the save method updates the 'updated_at' attribute."""
         obj = BaseModel()
