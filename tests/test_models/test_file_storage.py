@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+
+""" This module contains all the test cases for the FileStorage class."""
 import unittest
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
@@ -23,7 +26,9 @@ class TestFileStorage(unittest.TestCase):
         """
         Clean up after the test class.
         """
-        os.remove("file.json")
+        if os.path.exists("file.json"):
+            os.remove("file.json")
+
 
     def test_all(self):
         """
