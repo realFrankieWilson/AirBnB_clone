@@ -141,13 +141,14 @@ class TestBaseModel(unittest.TestCase):
     def test_is_type(self):
         """Type test with kwargs from dictionary."""
         my_dict = {
-        '__class__': 'BaseModel',
-        'updated_at': datetime(2040, 12, 30, 23, 59, 30, 123456).isoformat(),
-        'created_at': datetime.now().isoformat(),
-        'id': uuid4(),
-        'key_val': 'anything',
-        'int': 100,
-        'float': 1.00
+            '__class__': 'BaseModel',
+            'updated_at': datetime(
+                2040, 12, 30, 23, 59, 30, 123456).isoformat(),
+            'created_at': datetime.now().isoformat(),
+            'id': uuid4(),
+            'key_val': 'anything',
+            'int': 100,
+            'float': 1.00
         }
         new_dict = BaseModel(**my_dict)
         self.assertEqual(new_dict.to_dict(), my_dict)
