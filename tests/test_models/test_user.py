@@ -26,7 +26,8 @@ class TestUserClass(unittest.TestCase):
         user = User()
         self.assertIs(type(user.first_name), str)
         self.assertIs(type(user.last_name), str)
-        self.assertFalse(bool(user.name))
+        self.assertFalse(bool(user.first_name))
+        self.assertFalse(bool(user.last_name))
         self.assertTrue(user.first_name == "")
         self.assertTrue(user.last_name == "")
 
