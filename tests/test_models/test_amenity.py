@@ -11,13 +11,13 @@ from models.amenity import Amenity
 
 
 class TestAmenityClass(unittest.TestCase):
-    """ Test cases for the Amenity class in the models/amenity module"""
-    
+    """ Test cases against the Amenity class in the models/amenity module"""
+
     def setUp(self):
         self.amenity = Amenity()
 
     def test_Amenity_is_BaseModule_subclass(self):
-        """ 
+        """
         Verify Amenity class is a subclass of BaseModel
         """
         self.assertTrue(issubclass(type(self.amenity), BaseModel))
