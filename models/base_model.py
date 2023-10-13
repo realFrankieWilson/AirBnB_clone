@@ -57,7 +57,7 @@ class BaseModel:
                 to string object in ISO format.
         """
         dict_obj = self._dict_.copy()
-        dict_obj['_class'] = self.class.name_
+        dict_obj['_class'] = self.__class__.___name__
         dict_obj['created_at'] = self.created_at.isoformat()
         dict_obj['updated_at'] = self.updated_at.isoformat()
         return dict_obj
