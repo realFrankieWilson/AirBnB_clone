@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-""" This module implement the Place class (Child-class to BaseModel) """
+""" This module contains the Place class (Child-class to BaseModel) """
 from models.base_model import BaseModel
+
 
 class Place(BaseModel):
     """
-    Place class that inherit from BaseModel
-    
+    Implement the Place class.
+
     Args:
         city_id(str): store city id
         user_id(str): store user id.
@@ -30,4 +31,3 @@ class Place(BaseModel):
     latitude = 0.0
     longitude = 0.0
     amenity_ids = []
-    

@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-""" This module implement the Amenity class (Child-class to BaseModel) """
+""" This module contains  Amenity class (Child-class to BaseModel) """
 from models.base_model import BaseModel
+
 
 class Amenity(BaseModel):
     """
-    Amenity class that inherit from BaseModel
-    
+    Implement the Amenity class.
+
     Args:
         name(str): name of the amenity.
     """
