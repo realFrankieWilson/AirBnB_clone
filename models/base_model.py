@@ -9,16 +9,37 @@ from datetime import datetime
 class BaseModel:
     """Defines all common attributes/methods for other classes."""
 
-    def __init__(self):
-        """ Initialize a new instance of the BaseModel """
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+    def _init_(self, *args, **kwargs):
+        """
+        Initialize a new instance of the BaseModel
+        args:
+            args => a tuple of arguments.
+            kwargs => key-values arguments (arguments)
+        """
 
-    def __str__(self):
+        if kwargs:
+            # stores the datetime format
+            datetime_format = "%Y-%m-%dT%H:%M:%S.%f"
+            for key in kwargs:
+                if key == 'created_at':
+                    self._dict_['created_at'] = datetime.strptime(
+                        kwargs['created_at'], datetime_format
+                        )
+                elif key == 'updated_at':
+                    self._dict_['updated_at'] = datetime.strptime(
+                        kwargs['updated_at'], datetime_format
+                        )
+                else:
+                    self._dict_[key] = kwargs[key]
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+
+    def _str_(self):
         """ Returns a string representation of the instance. """
-        return '[{}] ({}) {}'.format(self.__class__.__name__,
-                                     self.id, self.__dict__)
+        return '[{}] ({}) {}'.format(self._class.name_,
+                                     self.id, self._dict_)
 
     def save(self):
         """"Update the updated_at attribute with the current datetime."""
@@ -27,16 +48,16 @@ class BaseModel:
     def to_dict(self):
         """
         Returns a dictionary containing all keys/values of
-        __dict__ of the instance.
-                by using self.__dict__, only instance attributes
+        _dict_ of the instance.
+                by using self._dict_, only instance attributes
                 set will be returned.
-                a key __class__ must be added to this dictionary
+                a key _class_ must be added to this dictionary
                 with the class name of the object.
                 created_at and updated_at must be converted
                 to string object in ISO format.
         """
-        dict_obj = self.__dict__.copy()
-        dict_obj['__class__'] = self.__class__.__name__
+        dict_obj = self._dict_.copy()
+        dict_obj['_class'] = self.class.name_
         dict_obj['created_at'] = self.created_at.isoformat()
         dict_obj['updated_at'] = self.updated_at.isoformat()
         return dict_obj
