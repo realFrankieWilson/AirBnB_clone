@@ -13,6 +13,7 @@ import unittest
 from uuid import uuid4
 import os
 
+
 class TestBaseModel(unittest.TestCase):
     """
     Test cases for the BaseModel class in the models/base_model module.
@@ -197,7 +198,6 @@ class TestBaseModel(unittest.TestCase):
     #         BaseModel.save()
     #     erro_msg = "save() missing 1 required positional argument: 'self'"
     #     self.assertEqual(str(e.exception), erro_msg)
-        
 
     # def test_storage_save(self):
     #     """

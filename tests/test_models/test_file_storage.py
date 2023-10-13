@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 
-""" This module contains all the test cases for the FileStorage class methods."""
+"""
+This module contains all the test cases for
+the FileStorage class methods.
+"""
 import unittest
 import os
 from models.engine.file_storage import FileStorage
