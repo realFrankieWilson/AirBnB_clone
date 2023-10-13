@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" This module implement the User clas (Child-class to BaseModel) """
+""" This module implement the User class (Child-class to BaseModel) """
 from models.base_model import BaseModel
 
 
