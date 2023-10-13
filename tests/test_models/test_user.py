@@ -12,26 +12,27 @@ from models.user import User
 class TestUserClass(unittest.TestCase):
     """ Test cases for the User class in the models/user module"""
 
-    def test_if_attributes_exit(self):
+    def test_if_class_attributes_exit(self):
         """ Verify User class has 'first_name' and 'last_name' attributes"""
-        user_1 = User()
+        user = User()
         self.assertTrue(hasattr(User, 'first_name'))
         self.assertTrue(hasattr(User, 'last_name'))
 
-    def test_class_attributes(self):
+    def test_class_attributes_type_and_initials(self):
         """
         Verify 'first_name' and 'last_name' have correct
         data types and initial values.
         """
-        user_1 = User()
-        self.assertIs(type(user_1.first_name), str)
-        self.assertIs(type(user_1.last_name), str)
-        self.assertTrue(user_1.first_name == "")
-        self.assertTrue(user_1.last_name == "")
+        user = User()
+        self.assertIs(type(user.first_name), str)
+        self.assertIs(type(user.last_name), str)
+        self.assertFalse(bool(user.name))
+        self.assertTrue(user.first_name == "")
+        self.assertTrue(user.last_name == "")
 
-    def test_inheritance(self):
+    def test_User_class_is_BaseModel_subclass(self):
         """
         Verify User class is a subclass of BaseModel.
         """
-        user_1 = User()
-        self.assertTrue(issubclass(type(user_1), BaseModel))
+        user = User()
+        self.assertTrue(issubclass(type(user), BaseModel))
