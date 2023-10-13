@@ -7,10 +7,11 @@ methods.
 import time
 from datetime import datetime
 from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
 import re
 import unittest
 from uuid import uuid4
-
+import os
 
 class TestBaseModel(unittest.TestCase):
     """
@@ -181,24 +182,40 @@ class TestBaseModel(unittest.TestCase):
         ellapsed = my_obj.updated_at - present_time
         self.assertTrue(abs(ellapsed.total_seconds()) < 0.01)
 
-    def test_excess_args_save(self):
-        """Tests save() with too many arguments."""
-        pass
+    # def test_excess_args_save(self):
+    #     """Tests save() with too many arguments."""
+    #     self.resetStorage()
+    #     with self.assertRaises(TypeError) as e:
+    #         BaseModel.save(self, 98)
+    #         erro_msg = "save() 1 positional argument but 2 were given"
+    #         self.assertEqual(str(e.exception), erro_msg)
 
-    def test_without_args_save(self):
-        """Tests save() with too many arguments."""
-        pass
+    # def test_without_args_save(self):
+    #     """Tests save() with no arguments passed."""
+    #     self.reloadStorage()
+    #     with self.assertRaises(TypeError) as e:
+    #         BaseModel.save()
+    #     erro_msg = "save() missing 1 required positional argument: 'self'"
+    #     self.assertEqual(str(e.exception), erro_msg)
+        
 
-        # obj = BaseModel()
-        # obj_dict = obj.to_dict()
-        # self.assertEqual(obj_dict['__class__'], 'BaseModel')
-        # # check if '__class__' is set correctly.
-        # self.assertTrue(hasattr(obj_dict, 'id'))
-        # # check if 'id' attribute is present.
-        # self.assertTrue(hasattr(obj_dict, 'created_at'))
-        # # check if 'created_at' attribute is present.
-        # self.assertTrue(hasattr(obj_dict, 'updated_at'))
-        # # check is 'updated_at attribute is present.
+    # def test_storage_save(self):
+    #     """
+    #     Test for the function call of save() that it's from the storage
+    #     module.
+    #     """
+    #     self.resetStorage()
+    #     my_obj = BaseModel()
+    #     my_obj.save()
+    #     key = "{}.{}".format(type(my_obj).__name__, my_obj.id)
+    #     obj = {key: my_obj.to_dict()}    # converts to dictionary file.
+    #     self.assertTrue(os.path.isfile(FileStorage.__FileStorage__file_path))
+    #     with open(
+    #         FileStorage.__FileStorage__file_path, 'r', encoding='utf-8'
+    #         ) as f:
+    #         self.assertEqual(len(f.read()), len(json.dumps(obj)))
+    #         f.seek(0)
+    #         self.assertEqual(json.load(f), obj)
 
 
 if __name__ == '__main':
