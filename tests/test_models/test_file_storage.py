@@ -1,70 +1,42 @@
 #!/usr/bin/python3
 
-""" This module contains all the test cases for the FileStorage class."""
+""" This module contains all the test cases for the FileStorage class methods."""
 import unittest
-from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
 import os
-
+from models.engine.file_storage import FileStorage
+from models.base_model import BaseModel
 
 class TestFileStorage(unittest.TestCase):
-    """
-    Test cases for the FileStorage class.
-    """
+    def setUp(self):
+        self.storage = FileStorage()
 
-    @classmethod
-    def setUpClass(cls):
-        """
-        Set up for the test class.
-        """
-        cls.storage = FileStorage()
-        cls.obj = BaseModel()
-        cls.obj.save()
-
-    @classmethod
-    def tearDownClass(cls):
-        """
-        Clean up after the test class.
-        """
-        if os.path.exists("file.json"):
-            os.remove("file.json")
-
-
-    def test_all(self):
-        """
-        Test the all() method of FileStorage.
-        """
+    def test_new_and_all(self):
+        model_instance = BaseModel()
+        model_instance.id = "123"
+        self.storage.new(model_instance)
         objects = self.storage.all()
-        self.assertTrue(isinstance(objects, dict))
-        self.assertIn("BaseModel.{}".format(self.obj.id), objects)
+        key = "{} {}".format(model_instance.__class__.__name__, model_instance.id)
+        self.assertIn(key, objects)
+        self.assertIs(objects[key], model_instance)
 
-    def test_new(self):
-        """
-        Test the new() method of FileStorage.
-        """
-        new_obj = BaseModel()
-        self.storage.new(new_obj)
-        objects = self.storage.all()
-        self.assertIn("BaseModel.{}".format(new_obj.id), objects)
+    def test_save_and_reload(self):
+        model_instance = BaseModel()
+        model_instance.id = "123"
+        self.storage.new(model_instance)
+        self.storage.save()
 
-    def test_save(self):
-        """
-        Test the save() method of FileStorage.
-        """
-        new_obj = BaseModel()
-        new_obj.save()
-        objects = self.storage.all()
-        self.assertIn("BaseModel.{}".format(new_obj.id), objects)
-
-    def test_reload(self):
-        """
-        Test the reload() method of FileStorage.
-        """
         new_storage = FileStorage()
         new_storage.reload()
         objects = new_storage.all()
-        self.assertIn("BaseModel.{}".format(self.obj.id), objects)
 
+        key = "{} {}".format(model_instance.__class__.__name__, model_instance.id)
+        self.assertIn(key, objects)
+        reloaded_instance = objects[key]
+        self.assertEqual(reloaded_instance.id, model_instance.id)
+
+    def tearDown(self):
+        if os.path.exists(FileStorage._FileStorage__file_path):
+            os.remove(FileStorage._FileStorage__file_path)
 
 if __name__ == '__main__':
     unittest.main()
