@@ -21,7 +21,7 @@ class FileStorage:
 
     def save(self):
         """ Save objects to a JSON file."""
-        serialized_obj = []
+        serialized_obj = {}
         for key, obj in FileStorage.__objects.items():
             serialized_obj[key] = obj.to_dict()
 
