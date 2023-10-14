@@ -5,6 +5,7 @@ A module that implements the BaseModel class
 
 from uuid import uuid4
 from datetime import datetime
+import models
 
 
 class BaseModel:
@@ -42,9 +43,9 @@ class BaseModel:
         """
         Updates 'self.updated_at' with the current datetime
         """
-        from models import storage
+        # from models import storage
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """
