@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ This module contain a class FileStorage that serializes
     instances to a JSON file and deserializes JSON file to instances."""
+
 import json
 
 from models.base_model import BaseModel
@@ -9,26 +10,35 @@ from models.state import State
 from models.amenity import Amenity
 from models.city import City
 from models.place import Place
-from models.review import Reviewr
+from models.review import Review
 
 
 class FileStorage:
-    """ Serializes intances to a JSON file and
-    deserializes JSON file to instances."""
+    """
+    serializes instances to a JSON file and
+    deserializes JSON file to instances
+    """
+
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """ Return the dictionary __objects"""
+        """
+        Returns the dictionary __objects
+        """
         return self.__objects
 
     def new(self, obj):
-        """sets in __objects the `obj` with key <obj class name>.id"""
+        """
+        sets in __objects the `obj` with key <obj class name>.id
+        """
         self.__objects["{}.{}".format(obj.__class__.__name__, obj.id)] = obj
 
     def save(self):
-        """ Serialize __objects to the JSON file."""
-        with open(self.__file_path, mode='w') as f:
+        """
+        Serialize __objects to the JSON file
+        """
+        with open(self.__file_path, mode="w") as f:
             dict_storage = {}
             for k, v in self.__objects.items():
                 dict_storage[k] = v.to_dict()
