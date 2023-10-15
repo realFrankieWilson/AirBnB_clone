@@ -4,6 +4,7 @@ Contains the FileStorage class model
 
 """
 import json
+import os
 
 from models.base_model import BaseModel
 from models.user import User
@@ -27,7 +28,7 @@ class FileStorage:
         """
         Returns the dictionary __objects
         """
-        return self.__objects
+        return FileStorage.__objects
 
     def new(self, obj):
         """
@@ -49,7 +50,7 @@ class FileStorage:
         """
         Deserializes the JSON file to __objects
         -> Only IF it exists!
-        """
+        """ 
         try:
             with open(self.__file_path, encoding="utf-8") as f:
                 for obj in json.load(f).values():
