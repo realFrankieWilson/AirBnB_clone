@@ -55,11 +55,73 @@ EOF  help  quit
 $
 ```
 
+
+
+## Commands
+* create - Create and object.
+* show - show an object (based on id)
+* destroy - destroy an object
+* all - show all objects, of one type or all types
+* update - Updates an instance based on the class name and id
+* quit/EOF - quit the console
+* help - see descriptions of commands
+
 To start console type in shell
 ``` bash
 AirBnB_clone$ ./console.py
 (hbnb) 
 ```
+
+## Create
+To create an object use format "create " ex:
+```bash
+    (hbnb) create BaseModel
+```
+
+## Show
+To show an instance based on the class name and id. Ex:
+```bash
+    (hbnb) show BaseModel 2344-5567-9845-46252j.
+```
+
+## Destroy
+To Delete an instance of an object use "destroy id". Ex:
+```bash
+    (hbnb) destroy BaseModel 2344-5567-9845-46252j.
+```
+## All
+all or all Ex:
+```bash
+    (hbnb) all or all Place
+```
+## Update
+Updates an instance based on the class name and id:
+```bash
+    (hbnb) update BaseModel 2344-5567-9845-46252j email "alxafrica@gmail.com"
+```
+
+## Quit
+quit() or EOF
+
+## Help
+help or help Ex:
+```bash
+    (hbnb) help or help quit
+    Defines quit option
+    (hbnb) 
+```
+
+## Supported classes:
+* BaseModel
+* User
+* State
+* City
+* Amenity
+* Place
+* Review
+
+
+
 
 ## Authors
 | NAME  | EMAIL       |
