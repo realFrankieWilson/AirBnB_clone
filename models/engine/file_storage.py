@@ -23,15 +23,6 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
-    classes = {
-        "BaseModel": User,
-        "User": User,
-        "State": State,
-        "City": City,
-        "Amenity": Amenity,
-        "Place": Place,
-        "Review": Review
-    }
 
     def all(self):
         """
@@ -55,6 +46,27 @@ class FileStorage:
                 dict_storage[k] = v.to_dict()
             json.dump(dict_storage, f)
 
+    def class_list(self):
+        """Returns a dictionary version of classes and their key value"""
+        from models.base_model import BaseModel
+        from models.user import User
+        from models.state import State
+        from models.amenity import Amenity
+        from models.city import City
+        from models.place import Place
+        from models.review import Review
+
+        classes = {
+            "BaseModel": User,
+            "User": User,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Place": Place,
+            "Review": Review
+        }
+        return classes
+
     def reload(self):
         """
         Deserializes the JSON file to __objects
@@ -65,10 +77,11 @@ class FileStorage:
         with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
             my_obj = json.load(f)
             my_obj = {
-                k: FileStorage.classes[v['__class__']](**v)
+                k: self.class_list()[v['__class__']](**v)
                 for k, v in my_obj.items()
                 }
             FileStorage.__objects = my_obj
+
         # try:
         #     with open(self.__file_path, encoding="utf-8") as f:
         #         for obj in json.load(f).values():
