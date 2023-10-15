@@ -23,6 +23,15 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
+    classes = {
+        "BaseModel": User,
+        "User": User,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review
+    }
 
     def all(self):
         """
@@ -50,10 +59,19 @@ class FileStorage:
         """
         Deserializes the JSON file to __objects
         -> Only IF it exists!
-        """ 
-        try:
-            with open(self.__file_path, encoding="utf-8") as f:
-                for obj in json.load(f).values():
-                    self.new(eval(obj["__class__"])(**obj))
-        except FileNotFoundError:
+        """
+        if not os.path.isfile(FileStorage.__file_path):
             return
+        with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
+            my_obj = json.load(f)
+            my_obj = {
+                k: FileStorage.classes[v['__class__']](**v)
+                for k, v in my_obj.items()
+                }
+            FileStorage.__objects = my_obj
+        # try:
+        #     with open(self.__file_path, encoding="utf-8") as f:
+        #         for obj in json.load(f).values():
+        #             self.new(eval(obj["__class__"])(**obj))
+        # except FileNotFoundError:
+        #     return
