@@ -12,6 +12,14 @@ from models.user import User
 class TestUserClass(unittest.TestCase):
     """ Test cases for the User class in the models/user module"""
 
+    def setUp(self):
+        """Sets up test methods,(makes sure tests are executed)"""
+        pass
+
+    def tearDown(self):
+        """Tears down test methods for execution"""
+        pass
+
     def test_if_class_attributes_exit(self):
         """ Verify User class has 'first_name' and 'last_name' attributes"""
         user = User()
