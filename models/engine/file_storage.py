@@ -50,7 +50,7 @@ class FileStorage:
         """
         Deserializes the JSON file to __objects
         -> Only IF it exists!
-        """ 
+        """
         try:
             with open(self.__file_path, encoding="utf-8") as f:
                 for obj in json.load(f).values():
