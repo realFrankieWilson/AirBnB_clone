@@ -87,7 +87,7 @@ class TestBaseModel(unittest.TestCase):
 # ========== THE __STR__ METHOD TESTS ==========
 
     def test_my_obj_str_rep(self):
-        """Test cases for the BaseModel class in the models/base_model module."""
+        """Test cases for the BaseModel class in the models/base_model."""
 
     def test_str_representation(self):
         """ Test the string representation of the object."""

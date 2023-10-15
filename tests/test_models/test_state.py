@@ -14,7 +14,7 @@ class TestStateClass(unittest.TestCase):
     """ Test cases for the State class in the models/state module"""
 
     def test_state_is_basemodel_subclass(self):
-        """ 
+        """
         Verify State class is a subclass of BaseModel
         """
         state = State()
