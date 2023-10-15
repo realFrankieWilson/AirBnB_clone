@@ -2,7 +2,6 @@
 """
 Contains the FileStorage class model
 
-
 """
 import json
 
