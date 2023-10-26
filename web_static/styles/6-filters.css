@@ -1,0 +1,54 @@
+/*
+=================================================
+Custom Style For Body
+=================================================
+*/
+
+.locations,
+.amenities {
+	display: inline-block;
+	height: 100%;
+}
+
+.popover {
+	visibility: hidden;
+	background-color: #FAFAFA;
+	width: 85.3;
+	border: 1px solid #DDDDDD;
+	padding: 20px 0 40px 0;
+	list-style-type: none;
+	margin: 15px 0 0 -1px;
+}
+
+.locations h3,
+.amenities h3 {
+	font-weight: 600;
+	margin: 15px auto auto 35px;
+}
+
+.locations h4,
+.amenities h4 {
+	font-size: 14px;
+	font-weight: 400;
+	margin: 5px auto auto 35px;
+}
+
+.locations:hover ul.popover,
+.amenities:hover ul.popover {
+	visibility: visible;
+}
+
+.popover ul,
+.popover li {
+	list-style-type: none;
+	line-height: 150%;
+}
+
+.locations ul h2 {
+	font-size: 16px;
+	margin: 0 0 3px 0;
+}
+
+.locations .popover {
+	width: 100%;
+}
