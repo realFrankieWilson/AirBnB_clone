@@ -5,6 +5,7 @@ Custom Style For Body
 */
 
 body {
+	display: inline-block;
 	margin: 0;
 	padding: 0;
 	color: #484848;
